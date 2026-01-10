@@ -1,0 +1,8 @@
+<suite name = "Orange HRM Automation"  >
+<test name = "Orange HRM login test">
+<classes>
+<class name = "com.jayant.orangehrm.tests.LoginDDTTest">
+</class>
+</classes>
+</test>
+</suite> 
