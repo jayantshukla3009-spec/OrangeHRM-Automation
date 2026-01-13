@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Orange HRM Automation]">
+  <listeners>
+    <listener class-name="com.jayant.orangehrm.listener.Listener"/>
+  </listeners>
+  <test thread-count="5" name="Orange HRM login test(failed)">
+    <classes>
+      <class name="com.jayant.orangehrm.tests.LoginDDTTest">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+          <include name="Ohrm_LoginTest" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- com.jayant.orangehrm.tests.LoginDDTTest -->
+    </classes>
+  </test> <!-- Orange HRM login test(failed) -->
+</suite> <!-- Failed suite [Orange HRM Automation] -->
