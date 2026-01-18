@@ -1,12 +1,12 @@
-<suite name = "Orange HRM Automation"  >
-<listeners>
-<listener class-name="com.jayant.orangehrm.listener.Listener">
-</listener>
-</listeners>
-<test name = "Orange HRM login test">
-<classes>
-<class name = "com.jayant.orangehrm.tests.LoginDDTTest">
-</class>
-</classes>
-</test>
+<suite name="Orange HRM Automation">
+	<listeners>
+		<listener class-name="com.jayant.orangehrm.listener.Listener">
+		</listener>
+	</listeners>
+	<test name="Orange HRM login test">
+		<classes>
+			<class name="com.jayant.orangehrm.tests.LoginDDTTest"></class>
+			<class name="com.jayant.orangehrm.tests.AdminTest"></class>
+		</classes>
+	</test>
 </suite> 

@@ -1,4 +1,5 @@
 package com.jayant.orangehrm.tests;
+
 import java.io.IOException;
 
 import org.openqa.selenium.By;
@@ -11,13 +12,13 @@ import com.jayant.orangehrm.util.ExcelUtil;
 
 public class LoginDDTTest extends BaseTest {
 
-	@DataProvider 
+	@DataProvider
 	public Object[][] LoginData() throws IOException {
 		return ExcelUtil.getLoginData("src/test/resources/excel-files/Orhm_loginData.xlsx", "LoginDataSheet");
 	}
 
 	@Test(dataProvider = "LoginData")
-	public void Ohrm_LoginTest(String username, String password,String expectedResult)  {
+	public void Ohrm_LoginTest(String username, String password, String expectedResult) {
 		getDriver().get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
 		// Login
 		getDriver().findElement(By.name("username")).sendKeys(username); // enter user name
@@ -26,27 +27,27 @@ public class LoginDDTTest extends BaseTest {
 
 		// Logout
 
-		String Dashboard_URL = getDriver().getCurrentUrl();
-
 		if (expectedResult.equalsIgnoreCase("Valid")) {
+			getWait().until(
+					ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[normalize-space()='Dashboard']")));
+			String Dashboard_URL = getDriver().getCurrentUrl();
 			Assert.assertTrue(Dashboard_URL.contains("/dashboard/"));
 			getWait().until(ExpectedConditions.elementToBeClickable(By.cssSelector(".oxd-userdropdown-tab"))).click();
-			getWait().until(ExpectedConditions.elementToBeClickable(By.xpath("//a[normalize-space()='Logout']"))).click();
+			getWait().until(ExpectedConditions.elementToBeClickable(By.xpath("//a[normalize-space()='Logout']")))
+					.click();
+			getWait().until(ExpectedConditions.visibilityOfElementLocated(By.name("username"))).isDisplayed();
 			Assert.assertTrue(getDriver().getCurrentUrl().contains("/login"));
-            System.out.println("Login succesful");
+			System.out.println("Login succesful");
 		} else {
-			String errorMsg= getWait()
+			String errorMsg = getWait()
 					.until(ExpectedConditions
-							.visibilityOfElementLocated(By.xpath("//p[normalize-space()='Invalid credentials']"))).getText();
+							.visibilityOfElementLocated(By.xpath("//p[normalize-space()='Invalid credentials']")))
+					.getText();
 			Assert.assertEquals(errorMsg, "Invalid credentials");
-			System.out.println("Login failed due to :"+errorMsg);
-					
+			System.out.println("Login failed due to :" + errorMsg);
 
 		}
-		System.out.println(
-			    "Thread ID: " + Thread.currentThread().getId()
-			);
-
+		System.out.println("Thread ID: " + Thread.currentThread().getId());
 
 	}
 }

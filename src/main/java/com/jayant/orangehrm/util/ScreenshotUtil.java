@@ -7,20 +7,19 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.io.FileHandler;
 
-
 public class ScreenshotUtil {
 
-public static String takeScreenshot(WebDriver driver , String testName) {
-	String SSpath = "Screenshots/OrangeHRM_fail_"+System.currentTimeMillis()+".png";
+	public static String takeScreenshot(WebDriver driver, String testName) {
+		String SSpath = "Screenshots/OrangeHRM_fail_" + System.currentTimeMillis() + ".png";
 
-	File src = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-	File dest = new File(SSpath);
-	dest.getParentFile().mkdirs();
-	try {
-		FileHandler.copy(src, dest);
-	}catch(IOException e) {
-		e.printStackTrace();
+		File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		File dest = new File(SSpath);
+		dest.getParentFile().mkdirs();
+		try {
+			FileHandler.copy(src, dest);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return SSpath;
 	}
-	return SSpath;
-}
 }

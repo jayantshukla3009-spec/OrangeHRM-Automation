@@ -10,7 +10,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 public class DriverFactory {
 
-	
 	public static WebDriver createDriver() {
 		Map<String, Object> pref = new HashMap<>();
 		pref.put("profile.credentials_enable_service", false);
@@ -24,6 +23,5 @@ public class DriverFactory {
 		return driver;
 
 	}
-
 
 }

@@ -6,13 +6,13 @@
   </listeners>
   <test thread-count="5" name="Orange HRM login test(failed)">
     <classes>
-      <class name="com.jayant.orangehrm.tests.LoginDDTTest">
+      <class name="com.jayant.orangehrm.tests.AdminTest">
         <methods>
           <include name="tearDown"/>
           <include name="setUp"/>
-          <include name="Ohrm_LoginTest" invocation-numbers="0"/>
+          <include name="loginTest"/>
         </methods>
-      </class> <!-- com.jayant.orangehrm.tests.LoginDDTTest -->
+      </class> <!-- com.jayant.orangehrm.tests.AdminTest -->
     </classes>
   </test> <!-- Orange HRM login test(failed) -->
 </suite> <!-- Failed suite [Orange HRM Automation] -->

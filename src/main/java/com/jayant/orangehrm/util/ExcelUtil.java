@@ -19,12 +19,13 @@ public class ExcelUtil {
 		int rows = sheet.getLastRowNum();
 		int cells = sheet.getRow(0).getPhysicalNumberOfCells();
 		Object logindata[][] = new Object[rows][cells];
-		for (int i = 1; i <=rows; i++) {
+		for (int i = 1; i <= rows; i++) {
 			Row row = sheet.getRow(i);
-			if(row==null)continue;
+			if (row == null)
+				continue;
 			for (int j = 0; j < cells; j++) {
 				Cell cell = row.getCell(j);
-				logindata[i - 1][j] =(cell==null)?"" : cell.toString();
+				logindata[i - 1][j] = (cell == null) ? "" : cell.toString();
 			}
 		}
 		wb.close();

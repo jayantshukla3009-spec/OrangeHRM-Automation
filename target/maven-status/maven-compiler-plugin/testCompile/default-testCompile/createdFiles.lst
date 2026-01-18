@@ -1,3 +1,4 @@
 com\jayant\orangehrm\listener\Listener.class
 com\jayant\orangehrm\tests\LoginDDTTest.class
 com\jayant\orangehrm\base\BaseTest.class
+com\jayant\orangehrm\tests\AdminTest.class
