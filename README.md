@@ -18,12 +18,36 @@ The automation suite covers core HR functionalities, including login, user manag
 
 ---
 
-##  Project Structure
-src/main/java → Page classes and utility classes
-src/test/java → Test classes
-src/test/resources → Test data and configuration files
-testng.xml → Test suite configuration
-pom.xml → Maven dependencies
+## Project Structure
+
+src/main/java  
+ ├── com.jayant.orangehrm.core  
+ │    ├── DriverFactory.java  
+ │    └── ExtentManager.java  
+ ├── com.jayant.orangehrm.util  
+ │    ├── ExcelUtil.java  
+ │    └── ScreenshotUtil.java  
+ └── com.jayant.pages  
+      ├── LoginPage.java  
+      └── AdminPage.java  
+
+src/test/java  
+ ├── com.jayant.orangehrm.base  
+ │    └── BaseTest.java  
+ ├── com.jayant.orangehrm.listener  
+ │    └── Listener.java  
+ └── com.jayant.orangehrm.tests  
+      ├── LoginDDT.java  
+      └── AdminTest.java  
+
+src/test/resources  
+ └── excel-files  
+      └── Orhm_loginData.xlsx  
+
+testng.xml – TestNG suite configuration  
+pom.xml – Maven dependencies  
+Reports/ – Extent HTML reports  
+Screenshots/ – Failure screenshots
 
 
 ---
