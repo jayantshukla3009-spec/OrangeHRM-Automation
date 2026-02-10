@@ -42,6 +42,9 @@ public class ExtentManager {
 
 	public static void flush() {
 		extent.flush();
+		
+	}
+	public static void testRemove() {
 		test.remove();
 	}
 }

@@ -18,6 +18,7 @@ public class Listener implements ITestListener {
 	public void onTestSuccess(ITestResult result) {
 
 		ExtentManager.getTest().pass(MarkupHelper.createLabel(result.getName() + "Test Passed", ExtentColor.GREEN));
+		ExtentManager.testRemove();
 	}
 
 	public void onTestFailure(ITestResult result) {
@@ -26,10 +27,12 @@ public class Listener implements ITestListener {
 		ExtentManager.getTest().fail(result.getThrowable());
 		String screenshot = ScreenshotUtil.takeScreenshot(driver, result.getName());
 		ExtentManager.getTest().addScreenCaptureFromPath(screenshot);
+		ExtentManager.testRemove();
 	}
 
 	public void onTestSkipped(ITestResult result) {
 		ExtentManager.getTest().skip(MarkupHelper.createLabel(result.getName() + "Test Skipped", ExtentColor.ORANGE));
+		ExtentManager.testRemove();
 	}
 
 	public void onFinish(ITestContext context) {
