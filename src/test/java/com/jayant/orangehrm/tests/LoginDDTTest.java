@@ -1,14 +1,12 @@
 package com.jayant.orangehrm.tests;
 
 import java.io.IOException;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import com.jayant.orangehrm.base.BaseTest;
 import com.jayant.orangehrm.util.ExcelUtil;
+import com.jayant.pages.LoginPage;
 
 public class LoginDDTTest extends BaseTest {
 
@@ -19,32 +17,22 @@ public class LoginDDTTest extends BaseTest {
 
 	@Test(dataProvider = "LoginData")
 	public void Ohrm_LoginTest(String username, String password, String expectedResult) {
-		getDriver().get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+		LoginPage login = new LoginPage(getDriver(), getWait());
+		login.pageOpen();
 		// Login
-		getDriver().findElement(By.name("username")).sendKeys(username); // enter user name
-		getDriver().findElement(By.name("password")).sendKeys(password);// enter password
-		getDriver().findElement(By.xpath("//button[normalize-space()='Login']")).click(); // click on login button
-
+		login.performLogin(username, password);
 		// Logout
 
 		if (expectedResult.equalsIgnoreCase("Valid")) {
-			getWait().until(
-					ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[normalize-space()='Dashboard']")));
-			String Dashboard_URL = getDriver().getCurrentUrl();
-			Assert.assertTrue(Dashboard_URL.contains("/dashboard/"));
-			getWait().until(ExpectedConditions.elementToBeClickable(By.cssSelector(".oxd-userdropdown-tab"))).click();
-			getWait().until(ExpectedConditions.elementToBeClickable(By.xpath("//a[normalize-space()='Logout']")))
-					.click();
-			getWait().until(ExpectedConditions.visibilityOfElementLocated(By.name("username"))).isDisplayed();
-			Assert.assertTrue(getDriver().getCurrentUrl().contains("/login"));
+
+			Assert.assertTrue(login.dashBoardIconIsDisplayed(), "DashBoard Icon was not displayed");
+			login.performLogout();
+
+			Assert.assertTrue(login.loginPageElementIsDisplayed());
 			System.out.println("Login succesful");
 		} else {
-			String errorMsg = getWait()
-					.until(ExpectedConditions
-							.visibilityOfElementLocated(By.xpath("//p[normalize-space()='Invalid credentials']")))
-					.getText();
-			Assert.assertEquals(errorMsg, "Invalid credentials");
-			System.out.println("Login failed due to :" + errorMsg);
+			Assert.assertEquals(login.errorMessage(), "Invalid credentials");
+			System.out.println("Login failed due to :" + login.errorMessage());
 
 		}
 		System.out.println("Thread ID: " + Thread.currentThread().getId());

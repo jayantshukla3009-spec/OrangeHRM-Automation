@@ -38,13 +38,13 @@ public class AdminPage {
 	}
 
 	public void clickAdmin() {
-		driver.findElement(adminMenu).click(); // click on admin from menu
+	wait.until(ExpectedConditions.elementToBeClickable(adminMenu)).click(); // click on admin from menu
 	}
 
 	public void searchByusername(String username)   {
-		driver.findElement(userTextbox).clear();
-		driver.findElement(userTextbox).sendKeys(username);// enter user name
-		driver.findElement(searchButton).click(); // click on search button
+		wait.until(ExpectedConditions.elementToBeClickable(userTextbox)).clear();
+		wait.until(ExpectedConditions.elementToBeClickable(userTextbox)).sendKeys(username);// enter user name
+		wait.until(ExpectedConditions.elementToBeClickable(searchButton)).click(); // click on search button
 		
 	}
 
@@ -64,16 +64,16 @@ public class AdminPage {
 
 
 	public void ByUserRole()  {
-		driver.findElement(userRoleDrop).click(); // click user role drop down
+		wait.until(ExpectedConditions.elementToBeClickable(userRoleDrop)).click(); // click user role drop down
 		wait.until(ExpectedConditions.elementToBeClickable(selectAdmin)).click(); // select admin
-		driver.findElement(searchButton).click(); // click on search button
+		wait.until(ExpectedConditions.elementToBeClickable(searchButton)).click(); // click on search button
 		
 	}
 
 	public void ByUserStatus()  {
-		driver.findElement(statusDropDown).click();
+		wait.until(ExpectedConditions.elementToBeClickable(statusDropDown)).click();
 		wait.until(ExpectedConditions.elementToBeClickable(selectEnabled)).click();
-		driver.findElement(searchButton).click(); // click on search button
+		wait.until(ExpectedConditions.elementToBeClickable(searchButton)).click(); // click on search button
 		
 	}
 

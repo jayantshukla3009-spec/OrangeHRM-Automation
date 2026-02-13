@@ -1,8 +1,7 @@
 package com.jayant.orangehrm.tests;
 
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+
 import org.testng.Assert;
 
 import org.testng.annotations.Test;
@@ -15,30 +14,28 @@ public class AdminTest extends BaseTest {
 
 	@Test
 	public void loginTest()  {
-		LoginPage p1 = new LoginPage(getDriver());
-		p1.pageOpen();
-		p1.login("Admin", "admin123");
-		getWait().until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[normalize-space()='Admin']"))).isDisplayed();
-		String url = getDriver().getCurrentUrl();
-		Assert.assertTrue(url.contains("/dashboard/"));
+		LoginPage login = new LoginPage(getDriver(),getWait());
+		login.pageOpen();
+		login.performLogin("Admin", "admin123");
+		Assert.assertTrue(login.dashBoardIconIsDisplayed());
 
-		AdminPage a1 = new AdminPage(getDriver(), getWait());
-		a1.clickAdmin();
-		a1.searchByusername("Admin");
+		AdminPage admin = new AdminPage(getDriver(), getWait());
+		admin.clickAdmin();
+		admin.searchByusername("Admin");
 		
-		int count = a1.getRecordCount();
+		int count = admin.getRecordCount();
 		System.out.println("Number of records Found: "+count);
 		Assert.assertTrue(count > 0, "No records found for username : Admin");
-		a1.refreshPage();
-		a1.ByUserRole();
+		admin.refreshPage();
+		admin.ByUserRole();
 		
-		int count1 = a1.getRecordCount();
+		int count1 = admin.getRecordCount();
 		System.out.println("Number of records Found: "+count1);
 		Assert.assertTrue(count1 > 0, "No records found for userRole : Admin");
-		a1.refreshPage();
-		a1.ByUserStatus();
+		admin.refreshPage();
+		admin.ByUserStatus();
 		
-		int count2 = a1.getRecordCount();
+		int count2 = admin.getRecordCount();
 		System.out.println("Number of records Found: "+count2);
 		Assert.assertTrue(count2 > 0, "No records found for Status : Enabled");
 

@@ -44,6 +44,8 @@ public class ExtentManager {
 		extent.flush();
 		
 	}
+	
+
 	public static void testRemove() {
 		test.remove();
 	}
