@@ -1,6 +1,27 @@
- .classpath
-        .project
-        .settings/
-        target/
-        test-output/
-        
+# Maven build folder
+/target/
+
+# TestNG reports
+/test-output/
+
+# Extent / Custom Reports
+/Reports/
+
+# Screenshots folder
+/Screenshots/
+
+# IntelliJ IDEA files
+/.idea/
+*.iml
+
+# Eclipse files (if ever used)
+.project
+.classpath
+.settings/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

@@ -1,15 +1,11 @@
-<suite name="Orange HRM Automation">
+<suite name="Orange HRM Automation" parallel ="classes" thread-count="2">
 	<listeners>
 		<listener class-name="com.jayant.orangehrm.listener.Listener">
 		</listener>
 	</listeners>
-	<test name="Orange HRM login test">
-		<classes>
-			<class name="com.jayant.orangehrm.tests.LoginDDTTest"></class>
-		</classes>
-	</test>
 	<test name="Orange HRM Admin test">
 		<classes>
+		<class name="com.jayant.orangehrm.tests.LoginDDTTest"></class>
 			<class name="com.jayant.orangehrm.tests.AdminTest"></class>
 		</classes>
 	</test>
