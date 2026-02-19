@@ -10,7 +10,7 @@ import org.openqa.selenium.io.FileHandler;
 public class ScreenshotUtil {
 
 	public static String takeScreenshot(WebDriver driver, String testName) {
-		String SSpath = "Screenshots/OrangeHRM_fail_" + System.currentTimeMillis() + ".png";
+		String SSpath = "Screenshots/OrangeHRM_fail_" +testName+ System.currentTimeMillis() + ".png";
 
 		File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		File dest = new File(SSpath);
