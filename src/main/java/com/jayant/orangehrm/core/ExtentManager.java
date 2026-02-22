@@ -41,7 +41,7 @@ public class ExtentManager {
 	}
 
 	public static void flush() {
-		extent.flush();
+		getReport().flush();
 		
 	}
 	
