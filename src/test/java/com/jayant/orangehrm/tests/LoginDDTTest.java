@@ -29,7 +29,7 @@ public class LoginDDTTest extends BaseTest {
 			login.performLogout();
 
 			Assert.assertTrue(login.loginPageElementIsDisplayed());
-			System.out.println("Login succesful valid creds");
+			System.out.println("Login succesful valid");
 		} else {
 			Assert.assertEquals(login.errorMessage(), "Invalid credentials");
 			System.out.println("Login failed due to :" + login.errorMessage());
