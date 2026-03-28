@@ -11,7 +11,7 @@ public class ExtentManager {
 	private static ExtentReports extent;
 	private static ThreadLocal<ExtentTest> test = new ThreadLocal<>();
 
-	public static ExtentReports getReport() {
+	public static synchronized ExtentReports getReport() {
 		if (extent == null) {
 			String reportPath = "Reports/OrangeHRM_Login_" + System.currentTimeMillis() + ".html";
 			File reportFile = new File(reportPath);
@@ -23,8 +23,8 @@ public class ExtentManager {
 			spark.config().setTheme(Theme.DARK);
 			extent = new ExtentReports();
 			extent.attachReporter(spark);
-			extent.setSystemInfo("User Name", "User.name");
-			extent.setSystemInfo("OS", "User.os");
+			extent.setSystemInfo("User Name", "user.name");
+			extent.setSystemInfo("OS", "user.os");
 			extent.setSystemInfo("Browser", "Chrome");
 
 		}
